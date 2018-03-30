@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="assets/plugins/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title>Projeto Cadastro</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Formulário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:void(0)">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="name">Nome</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Insira seu nome" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Insira seu email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="date">Data de Nascimento</label>
+                                    <input type="text" class="form-control" name="date" id="date" placeholder="Insira sua data de nascimento" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="send">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/plugins/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/plugins/js/jquery.mask.min.js"></script>
+    <script src="assets/plugins/js/jquery.validate.min.js"></script>
+    <script src="assets/plugins/js/popper.js"></script>
+    <script src="assets/plugins/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
