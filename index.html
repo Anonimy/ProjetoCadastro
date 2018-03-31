@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="assets/plugins/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/datatables.min.css"/>
     <title>Projeto Cadastro</title>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div style="margin: 15px 0;">
+                        <table id="tableList" class="table table-striped table-bordered" style="width:100%;"></table>
+                    </div>
+                    <button type="button" class="btn btn-success" style="float:right;" data-target="#modalRegister" data-toggle="modal">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="form">
                     <div class="modal-header">
-                        <h5 class="modal-title">Formulário</h5>
+                        <h5 class="modal-title">Cadastro</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="javascript:void(0)">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="name">Nome</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Insira seu nome" />
-                                </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="name">Nome</label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Insira seu nome" />
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Insira seu email" />
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Insira seu email" />
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="date">Data de Nascimento</label>
-                                    <input type="text" class="form-control" name="date" id="date" placeholder="Insira sua data de nascimento" />
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="date">Data de Nascimento</label>
+                                <input type="text" class="form-control" name="date" id="date" placeholder="Insira sua data de nascimento" />
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="send">Salvar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-    <script src="assets/plugins/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/plugins/js/jquery.mask.min.js"></script>
-    <script src="assets/plugins/js/jquery.validate.min.js"></script>
-    <script src="assets/plugins/js/popper.js"></script>
-    <script src="assets/plugins/js/bootstrap.min.js"></script>
-    <script src="assets/js/script.js"></script>
+
+    <script type="text/javascript" src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/popper/popper.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-mask/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-validate/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
