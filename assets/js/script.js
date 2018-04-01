@@ -1,6 +1,8 @@
 (function (window, document) {
     "use strict";
 
+    var isValidForm = true;
+
     var form = $("#form");
     var modal = $("#modalRegister");
     var name = $("#name");
@@ -62,6 +64,14 @@
         ]
     });
 
+    $.validator.addMethod("dateBR", function dateBR(value, element) {
+        return value.match(/^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
+    });
+
+    form.validate({
+        // INSIRA VALIDACAO AQUI
+    });
+
     form.submit(function onSubmitHandler(e) {
         e.preventDefault();
         tableHandler();
@@ -90,27 +100,22 @@
         modal.modal("show");
         button.click(function beforeSubmitHandler(e) {
             e.preventDefault();
-            if (tableHandler()) {
+            form.submit();
+            if (isValidForm) {
                 row.remove().draw();
             }
         });
     });
 
     function tableHandler() {
-        if (validate()) {
+        if (isValidForm) {
             table.row.add({
                 name: name.val(),
                 email: email.val(),
                 date: date.val()
             });
             modal.modal("hide");
-            return true;
         }
-        return false;
-    }
-
-    function validate() {
-        // INSIRA A VALIDACAO AQUI
-        return true;
+        return isValidForm;
     }
 })(window, document);
