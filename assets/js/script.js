@@ -10,7 +10,7 @@
     var date = $("#date");
     var tableList = $("#tableList");
 
-    $("#date").mask("00/00/0000");
+    $("#date").mask("99/99/9999");
     var table = tableList.DataTable({
         language: {
             emptyTable: "Nenhum registro encontrado",
@@ -65,11 +65,47 @@
     });
 
     $.validator.addMethod("dateBR", function dateBR(value, element) {
-        return value.match(/^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
+        var regex = /^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+        if(value.match(regex)) {
+            var arrDate = value.split(/\//g);
+            var date = new Date(arrDate[2], Number(arrDate[1]) - 1, arrDate[0]);
+            return date < new Date();
+        }
+        return false;
     });
 
     form.validate({
-        // INSIRA VALIDACAO AQUI
+        errorClass: 'text-danger',
+        rules: {
+            name: "required",
+            email: {
+                required: true,
+                email: true
+            },
+            date: {
+                required: true,
+                dateBR: true
+            }
+        },
+        messages: {
+            name: {
+                required: "Por favor, insira um nome"
+            },
+            email: {
+                required: "Por favor, insira um endereço de e-mail",
+                email: "O endereço de e-mail é inválido"
+            },
+            date: {
+                required: "Por favor, insira uma data",
+                dateBR: "A data inserida é inválida"
+            }
+        },
+        invalidHandler: function(event, validator) {
+            isValidForm = false;
+        },
+        submitHandler: function(form) {
+            isValidForm = true;
+        }
     });
 
     form.submit(function onSubmitHandler(e) {
