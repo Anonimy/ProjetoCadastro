@@ -81,7 +81,7 @@
         return false;
     });
 
-    form.validate({
+    var Validator = form.validate({
         errorClass: 'text-danger',
         rules: {
             name: "required",
@@ -138,6 +138,7 @@
     });
 
     tableList.on("click", ".btnEdit", function onEditHandler(e) {
+        Validator.form();
         var row = table.row($(e.currentTarget).closest("tr"));
         var data = row.data();
         var button = form.find("button[type='submit']");
